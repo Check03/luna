@@ -10,22 +10,22 @@ function moveCalc(event){
 
 let startX, startY;
 
-drag.addEventListener('mousedown', function(event){
+drag.addEventListener('mousemove', function(event){
     startX = event.clientX - calc.offsetLeft;
     startY = event.clientY - calc.offsetTop;
-    document.addEventListener('mousedown', moveCalc)
+    document.addEventListener(' mousemove', moveCalc)
 })
 
 drag.addEventListener('mouseup', function(){  
-    document.removeEventListener('mousedown', moveCalc)
+    document.removeEventListener('mouseup', moveCalc)
 })
 
 
 let formula = '';
 
 buttonContain.addEventListener('click', function(event){
-    const value = event.target.innerText;
-    if (value == '=') {
+    const value = event.target.value;
+    if (event.target.value == '=') {
         formula = new Function('return' + formula)();
         output.innerText = formula;
     }
