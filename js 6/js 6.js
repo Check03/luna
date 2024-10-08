@@ -24,31 +24,33 @@ document.addEventListener('mouseup', function() {
 
 let formula = '';
 
-buttonContain.addEventListener('click', function(event) {
-    const value = event.target.innerText; // Получаем текст на кнопке
-
-    if (value === '=') {
-        // Проверка формулы перед выполнением
+buttonContain.addEventListener('click', function(event){
+    if (event.target.value == '=') {
         if (/^[\d\s()+\-*/.]+$/.test(formula) && formula !== '') {
-            // Создание функции для вычисления выражения
             const result = new Function('return ' + formula)();
-            output.innerText = result; // Вывод результата
-            formula = ''; // Сброс формулы после вычисления
+            output.innerText = result; 
+            formula = ''; 
         } else {
-            output.innerText = 'Error'; // Для недопустимых формул
-            formula = ''; // Сброс формулы
+            output.innerText = 'Error'; 
+            formula = ''; 
         }
-    } else if (value === '+/-') {
-        formula = (-1 * parseFloat(formula)).toString(); // Изменение знака числа
-        output.innerText = formula; // Обновление вывода
-    } else if (value === 'AC' || value === 'C') {
-        formula = ''; // Сброс формулы
-        output.innerText = '0'; // Обновление вывода
-    } else {
-        formula += value; // Добавление значения к формуле
-        output.innerText = formula; // Обновление вывода
     }
-});
+    else if (event.target.value == '+/-'){
+        formula = -formula;
+        output.innerText = formula;
+    }
+    else if (event.target.value == 'AC' ||event.target.value == 'C'){
+        formula = '';
+        output.innerText = '0';
+    }
+    else {
+        formula += event.target.value;
+        output.innerText = formula;
+    }
+}) 
+
+
+    
 
 
 
