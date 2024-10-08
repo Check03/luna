@@ -26,14 +26,8 @@ let formula = '';
 
 buttonContain.addEventListener('click', function(event){
     if (event.target.value == '=') {
-        if (/^[\d\s()+\-*/.]+$/.test(formula) && formula !== '') {
-            const result = new Function('return ' + formula)();
-            output.innerText = result; 
-            formula = ''; 
-        } else {
-            output.innerText = 'Error'; 
-            formula = ''; 
-        }
+        formula = new Function('return' + formula)();
+        output.innerText = formula;
     }
     else if (event.target.value == '+/-'){
         formula = -formula;
@@ -49,8 +43,6 @@ buttonContain.addEventListener('click', function(event){
     }
 }) 
 
-
-    
 
 
 
