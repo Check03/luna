@@ -8,7 +8,8 @@ function moveCalc(event){
     calc.style.top = `${event.clientY - startY}px`;
 }
 
-let startX, startY;
+let startX;
+let startY;
 
 drag.addEventListener('mousedown', function(event) {
     startX = event.clientX - calc.offsetLeft;
@@ -17,7 +18,7 @@ drag.addEventListener('mousedown', function(event) {
 });
 
 
-document.addEventListener('mouseup', function() {
+drag.addEventListener('mouseup', function() {
     document.removeEventListener('mousemove', moveCalc);
 });
 
@@ -25,9 +26,11 @@ document.addEventListener('mouseup', function() {
 let formula = '';
 
 buttonContain.addEventListener('click', function(event){
+    if (event.target.value != undefined){
     if (event.target.value == '=') {
-        formula = new Function('return' + formula)();
+        formula = new Function('return ' + formula)();
         output.innerText = formula;
+        console.log(`1`)
     }
     else if (event.target.value == '+/-'){
         formula = -formula;
@@ -37,10 +40,11 @@ buttonContain.addEventListener('click', function(event){
         formula = '';
         output.innerText = '0';
     }
+
     else {
         formula += event.target.value;
         output.innerText = formula;
-    }
+    }}
 }) 
 
 
