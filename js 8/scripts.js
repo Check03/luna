@@ -28,7 +28,7 @@ function checkWinner (){
 }
 
 function clear(){
-    pin = ''
+    pin = 'asdd'
 }
 
 game.addEventListener('click', function(event){
