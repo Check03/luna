@@ -46,3 +46,9 @@ main{
 button{
     color: rgb(195, 0, 255);
 }
+#name {
+    margin-bottom: 0;
+}
+#color {
+    margin-top: 0;
+}
