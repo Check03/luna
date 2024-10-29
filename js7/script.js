@@ -1,6 +1,7 @@
 const colorsContain = document.getElementById('colorsContain');
 const text = document.getElementById('text');
 const color = document.getElementById('color');
+const type = document.getElementById('type');
 
 let colorsBank=[];
 
@@ -15,10 +16,7 @@ document.addEventListener('DOMContentLoaded',function(){
 })
 
 document.getElementById('save').addEventListener('click',function(){
-    const colorValue = color.value; 
-    const colorType = type.value; 
-
-    if (colorType === 'HEX' && (color.value.length == 6 || color.value.length == 3 && text.value != '')){
+    if (type.value === 'HEX' && (color.value.length == 6 || color.value.length == 3 && text.value != '')){
         color.value = '#' + color.value
         colorsBank.push([text.value, color.value]);
         Cookies.set('colors', JSON.stringify(colorsBank));
@@ -26,7 +24,7 @@ document.getElementById('save').addEventListener('click',function(){
         color.value = '';
         text.value = '';
     }
-    else if (colorType === 'RGB'){
+    else if (type.value === 'RGB'){
         color.value = 'rgb(' + color.value + ')'
         colorsBank.push([text.value, color.value]);
         Cookies.set('colors', JSON.stringify(colorsBank));
