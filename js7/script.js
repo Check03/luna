@@ -15,9 +15,25 @@ document.addEventListener('DOMContentLoaded',function(){
 })
 
 document.getElementById('save').addEventListener('click',function(){
-    colorsBank.push([text.value, color.value]);
-    Cookies.set('colors', JSON.stringify(colorsBank));
-    colorsContain.innerHTML += '<div class="color" style="background-color:' + color.value + '"><div class="info"><h5 id="name">' + text.value + '</h5><h5 id="color">' + color.value + '</h5></div></div>';
+    const colorValue = color.value; 
+    const colorType = type.value; 
+
+    if (colorType === 'HEX' && (color.value.length == 6 || color.value.length == 3 && text.value != '')){
+        color.value = '#' + color.value
+        colorsBank.push([text.value, color.value]);
+        Cookies.set('colors', JSON.stringify(colorsBank));
+        colorsContain.innerHTML += '<div class="color" style="background-color:' + color.value + '"><div class="info"><h5 id="name">' + text.value + '</h5><h5 id="color">' + color.value + '</h5></div></div>';
+        color.value = '';
+        text.value = '';
+    }
+    else if (colorType === 'RGB'){
+        color.value = 'rgb(' + color.value + ')'
+        colorsBank.push([text.value, color.value]);
+        Cookies.set('colors', JSON.stringify(colorsBank));
+        colorsContain.innerHTML += '<div class="color" style="background-color:' + color.value + '"><div class="info"><h5 id="name">' + text.value + '</h5><h5 id="color">' + color.value + '</h5></div></div>';
+        color.value = '';
+        text.value = '';
+    }
 })
 
 document.getElementById('clear').addEventListener('click',function(){
