@@ -9,24 +9,22 @@ const players = ['X', '0'];
 const Winners = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]];
 
 let schetchick = true;
-let data = item
+let data = ['','','','','','','','','']; 
 
 function checkWinner(){
-    let playerResults = [];
-    for (i = 0; i < data.length; i++){
-        playerResults.push(data[i].innerText = players);
-    }
-    for (let items of Winners){
-        let Switch = true;
-        for (let i = 0; i < items.length; i++){
-            if (!playerResults[items[i] - 1]){
-                console.log('err')
-                Switch = false;
+    for(let i = 0; i < win.length; i++){
+        let che=true;
+        for(let j = 0; j < win[i].length; j++){
+            if(data[win[i][j]-1]!=players[hod?0:1]){
+                che=false;
                 break;
             }
         }
-        if (Switch){
-            player.innerText = ' '
+        if(che){
+            return che; 
+        }
+        }
+        if (che){
             console.log('vvvvvviiiinnnnnnnnn')
             player.innerText = players[schetchick ? 0 : 1]
             if(schetchick = true){
@@ -35,11 +33,10 @@ function checkWinner(){
             else{
                 pin[1].innerText = +1; 
             }
-            
-            return items;
+            return che;
         }
-    }
-}
+ }
+
 
 game.addEventListener('click', function(event){
     if(event.target.classList[0] == 'item' && event.target.innerText == '' ){

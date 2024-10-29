@@ -20,7 +20,9 @@
                 <button id="clear">clear</button>
             </div>
         </div>
-        <div id="colorsContain"></div>
+        <div id="colorsContain">
+            
+        </div>
     </main>
     <script src="js-cookie/dist/js.cookie.min.js"></script>
     <script src="script.js"></script>
