@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded',function(){
 })
 
 document.getElementById('save').addEventListener('click',function(){
-    colorsBank.push([color.value, text.value]);
+    colorsBank.push([text.value, color.value]);
     Cookies.set('colors', JSON.stringify(colorsBank));
     colorsContain.innerHTML += '<div class="color" style="background-color:' + color.value + '"><div class="info"><h5 id="name">' + text.value + '</h5><h5 id="color">' + color.value + '</h5></div></div>';
 })
