@@ -25,10 +25,16 @@ function checkWin(){
     }
 }
 
-function hUy(){
+function hy(){
     pScore[IVAN?0:1] += 1;
     pin[IVAN?0:1].innerText = pScore[IVAN?0:1];
-    clear();
+     if(IVAN){
+            player.innerText = 'победил X'
+        }
+        else{
+            player.innerText = 'победил 0'
+        }
+
 }
 
 function clear(){
@@ -39,17 +45,22 @@ function clear(){
 }
 
 game.addEventListener('click',function(event){
-    if(event.target.classList[0] == 'item'&& event.target.innerText == ''){
+    if(event.target.classList[0] == 'item'&& event.target.innerText == '' && (player.innerText == 'X' || player.innerText == "0")){
         event.target.innerText = players[IVAN ? 0:1];
         for(let i = 0; i < items.length; i++){
             dat[i] = items[i].innerText;
-            
         }
         let a = checkWin();
         if(a){
-            hUy();
+            hy();
         }
         else{
+            if(!IVAN){
+                player.innerText = 'X'
+            }
+            else{
+                player.innerText = '0'
+            }
             IVAN = !IVAN;
         }
     }
@@ -57,6 +68,7 @@ game.addEventListener('click',function(event){
 
 document.getElementById('restart').addEventListener('click',function(event){
     clear();
+    player.innerText = 'X'
 })
 
 document.getElementById('clear').addEventListener('click',function(event){
