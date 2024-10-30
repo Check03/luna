@@ -76,4 +76,5 @@ document.getElementById('clear').addEventListener('click',function(event){
     pScore[1]=0;
     pin[0].innerText=0;
     pin[1].innerText=0;
+    player.innerText = 'X'
 })
