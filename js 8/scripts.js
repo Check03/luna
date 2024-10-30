@@ -1,63 +1,67 @@
 const game = document.getElementById('game');
-const item = document.querySelectorAll ('.item')
-const pin = [document.getElementById('p1Score'), document.getElementById('p2Score')]
-const button = document.getElementById(`clear`);
-const button2 = document.getElementById(`restart`);
+const items = game.querySelectorAll('.item');
+const pin = [document.getElementById('p1Score'),document.getElementById('p2Score')];
+const win = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
 const player = document.getElementById('player')
 
-const players = ['X', '0'];
-const Winners = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]];
+let pScore = [0,0];
+let players = ['X',"0"];
 
-let schetchick = true;
-let data = ['','','','','','','','','']; 
+let IVAN = true;
+let dat=['','','','','','','','',''];
 
-function checkWinner(){
+function checkWin(){
     for(let i = 0; i < win.length; i++){
-        let che=true;
+        let PAXA = true;
         for(let j = 0; j < win[i].length; j++){
-            if(data[win[i][j]-1]!=players[hod?0:1]){
-                che=false;
+            if(dat[win[i][j]-1] != players[IVAN?0:1]){
+                PAXA=false;
                 break;
             }
         }
-        if(che){
-            return che; 
+        if(PAXA){
+            return PAXA; 
         }
-        }
-        if (che){
-            console.log('vvvvvviiiinnnnnnnnn')
-            player.innerText = players[schetchick ? 0 : 1]
-            if(schetchick = true){
-                pin[0].innerText = +1;
-            }
-            else{
-                pin[1].innerText = +1; 
-            }
-            return che;
-        }
- }
+    }
+}
 
+function hUy(){
+    pScore[IVAN?0:1] += 1;
+    pin[IVAN?0:1].innerText = pScore[IVAN?0:1];
+    clear();
+}
 
-game.addEventListener('click', function(event){
-    if(event.target.classList[0] == 'item' && event.target.innerText == '' ){
-        event.target.innerText = players[schetchick ? 0 : 1]
-        schetchick=!schetchick    
-        checkWinner()
+function clear(){
+    for(item of items){
+        item.innerText = '';
+    }
+    IVAN= true;
+}
+
+game.addEventListener('click',function(event){
+    if(event.target.classList[0] == 'item'&& event.target.innerText == ''){
+        event.target.innerText = players[IVAN ? 0:1];
+        for(let i = 0; i < items.length; i++){
+            dat[i] = items[i].innerText;
+            
+        }
+        let a = checkWin();
+        if(a){
+            hUy();
+        }
+        else{
+            IVAN = !IVAN;
+        }
     }
 })
 
-button.addEventListener(`click`, function() {
-    for(let i = 0; i < 9; i++){
-        item[i].innerText = ''
-    }
-    pin[0].innerText = '0'
-    pin[1].innerText = '0'
-
+document.getElementById('restart').addEventListener('click',function(event){
+    clear();
 })
 
-button2.addEventListener(`click`, function() {
-    for(let i = 0; i < 9; i++){
-        item[i].innerText = ''
-    }
+document.getElementById('clear').addEventListener('click',function(event){
+    pScore[0]=0;
+    pScore[1]=0;
+    pin[0].innerText=0;
+    pin[1].innerText=0;
 })
-
