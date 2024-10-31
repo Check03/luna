@@ -6,33 +6,32 @@ const player = document.getElementById('player')
 
 let pScore = [0,0];
 let players = ['X',"0"];
-
-let IVAN = true;
+let Schetchik1 = true;
 let dat=['','','','','','','','',''];
 
 function checkWin(){
     for(let i = 0; i < win.length; i++){
-        let PAXA = true;
+        let Schetchik2 = true;
         for(let j = 0; j < win[i].length; j++){
-            if(dat[win[i][j]-1] != players[IVAN?0:1]){
-                PAXA=false;
+            if(dat[win[i][j]-1] != players[Schetchik1?0:1]){
+                Schetchik2=false;
                 break;
             }
         }
-        if(PAXA){
-            return PAXA; 
+        if(Schetchik2){
+            return Schetchik2; 
         }
     }
 }
 
 function hy(){
-    pScore[IVAN?0:1] += 1;
-    pin[IVAN?0:1].innerText = pScore[IVAN?0:1];
-     if(IVAN){
-            player.innerText = 'победил X'
+    pScore[Schetchik1?0:1] += 1;
+    pin[Schetchik1?0:1].innerText = pScore[Schetchik1?0:1];
+     if(Schetchik1){
+            player.innerText = 'Победил X'
         }
         else{
-            player.innerText = 'победил 0'
+            player.innerText = 'Победил 0'
         }
 
 }
@@ -41,12 +40,12 @@ function clear(){
     for(item of items){
         item.innerText = '';
     }
-    IVAN= true;
+    Schetchik1= true;
 }
 
 game.addEventListener('click',function(event){
     if(event.target.classList[0] == 'item'&& event.target.innerText == '' && (player.innerText == 'X' || player.innerText == "0")){
-        event.target.innerText = players[IVAN ? 0:1];
+        event.target.innerText = players[Schetchik1 ? 0:1];
         for(let i = 0; i < items.length; i++){
             dat[i] = items[i].innerText;
         }
@@ -55,13 +54,13 @@ game.addEventListener('click',function(event){
             hy();
         }
         else{
-            if(!IVAN){
+            if(!Schetchik1){
                 player.innerText = 'X'
             }
             else{
                 player.innerText = '0'
             }
-            IVAN = !IVAN;
+            Schetchik1 = !Schetchik1;
         }
     }
 })

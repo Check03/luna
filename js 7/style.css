@@ -4,7 +4,7 @@ body{
 
 main{
     min-height: 100vh;
-    background-color: rgb(39, 39, 39);
+    background-color: rgb(74, 60, 124);
 }
 
 #formContain{
@@ -44,7 +44,7 @@ main{
 }
 
 button{
-    color: rgb(195, 0, 255);
+    color: rgb(255, 0, 0);
 }
 #name {
     margin-bottom: 0;
